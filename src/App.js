@@ -8,7 +8,6 @@ class App extends Component {
     this.state = {
       diseaseNames: [],
       pathogens: [],
-
     };
   }
 
@@ -17,14 +16,12 @@ class App extends Component {
   }
 
   checkAnswers = () => {
-    const { left, right, answer, diseaseNames, pathogens } = this.state;
-    // if (_.isEqual(left, answer)) {
-    //   console.log('correct!');
-    // } else {
-    //   console.log('try again')
-    // }
+    const { answer, diseaseNames, pathogens } = this.state;
 
-    if (diseaseNames[left[answer[0]]].index === pathogens[right[0]].index) { console.log('yes') };
+    const a0 = answer.map((index) => diseaseNames[index]).map((item => item.index));
+    const a1 = pathogens.map((item) => item.index);
+
+    alert(`${_.isEqual(a0, a1) ? 'correct' : 'incorrect'}`);
   }
 
   refresh = () => {
